@@ -4,7 +4,7 @@ import { useBoardStore } from '../boardStore'
 describe('BoardStore - 보드 관리', () => {
   beforeEach(() => {
     // 각 테스트 전에 store 초기화
-    useBoardStore.getState().reset()
+    useBoardStore.getState().boards = []
   })
 
   describe('초기 상태', () => {
