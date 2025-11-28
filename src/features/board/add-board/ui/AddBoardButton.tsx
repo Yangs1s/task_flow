@@ -2,6 +2,14 @@
 import { Button } from "@/src/shared/ui/button";
 import { PlusIcon } from "lucide-react";
 
+
+
+type AddBoardButtonProps = React.ComponentPropsWithoutRef<'button'>
+
+type ButtonProps = {
+  onClick:AddBoardButtonProps['onClick']
+}
+
 export const AddBoardButton = () => {
   const handleAddBoard = () => {
     // 보드 추가 로직 (나중에 구현)
