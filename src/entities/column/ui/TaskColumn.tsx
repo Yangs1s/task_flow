@@ -33,7 +33,7 @@ export const TaskColumn = ({ column }: TaskColumnProps) => {
         ))}
       </div>
       
-      <AddTaskButton />
+      <AddTaskButton columnId={column.id} />
     </div>
   )
 }

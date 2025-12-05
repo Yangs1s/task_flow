@@ -35,3 +35,4 @@ describe('cn utility function', () => {
     })).not.toContain('inactive')
   })
 }
+)

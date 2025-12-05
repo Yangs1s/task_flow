@@ -2,20 +2,32 @@
 
 import { useColumnStore } from "@/src/entities/column/model/columnStore"
 import { TaskColumn } from "@/src/entities/column/ui"
-import {useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
+
 interface BoardContainerProps {
   boardId: string
 }
 
 export const BoardContainer = ({ boardId }: BoardContainerProps) => {
   const allColumns = useColumnStore((state) => state.columns)
+  const addColumn = useColumnStore((state) => state.addColumn)
+
+  // 초기 컬럼 데이터 세팅 (컬럼이 없을 때만)
+  useEffect(() => {
+    if (allColumns.length === 0) {
+      addColumn({ title: '📋 To Do', boardId, order: 0 })
+      addColumn({ title: '🚧 In Progress', boardId, order: 1 })
+      addColumn({ title: '✅ Done', boardId, order: 2 })
+    }
+  }, [allColumns.length, addColumn, boardId])
 
   const columns = useMemo(() => {
-    return allColumns.sort((a, b) => a.order - b.order)
+    return [...allColumns].sort((a, b) => a.order - b.order)
   }, [allColumns])
+
   return (
     <div className="flex gap-4 overflow-x-auto p-4">
-      {columns?.map((column) => (
+      {columns.map((column) => (
         <TaskColumn key={column.id} column={column} />
       ))}
     </div>
