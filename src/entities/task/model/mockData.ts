@@ -1,11 +1,12 @@
 import { Task } from './types';
+import { COLUMN_ID } from '@/src/shared/constants';
 
 export const mockTasks: Task[] = [
   {
     id: '1',
     title: 'API 엔드포인트 설계',
     description: 'RESTful API 설계 및 문서화 작업',
-    columnId: 'todo',
+    columnId: COLUMN_ID.TODO,
     order: 1,
     priority: 'low',
     tags: ['backend', 'api'],
@@ -18,7 +19,7 @@ export const mockTasks: Task[] = [
     id: '2',
     title: 'UI 컴포넌트 개발',
     description: '공통 컴포넌트 라이브러리 구축',
-    columnId: 'in-progress',
+    columnId: COLUMN_ID.IN_PROGRESS,
     order: 1,
     priority: 'medium',
     tags: ['frontend', 'react'],
@@ -31,7 +32,7 @@ export const mockTasks: Task[] = [
     id: '3',
     title: '데이터베이스 스키마 설계',
     description: 'PostgreSQL 스키마 및 인덱스 최적화',
-    columnId: 'todo',
+    columnId: COLUMN_ID.TODO,
     order: 2,
     priority: 'high',
     tags: ['database', 'optimization'],
@@ -44,7 +45,7 @@ export const mockTasks: Task[] = [
     id: '4',
     title: '사용자 인증 구현',
     description: 'JWT 기반 인증 시스템 구축',
-    columnId: 'in-progress',
+    columnId: COLUMN_ID.IN_PROGRESS,
     order: 2,
     priority: 'high',
     tags: ['security', 'auth'],
@@ -57,7 +58,7 @@ export const mockTasks: Task[] = [
     id: '5',
     title: '테스트 코드 작성',
     description: '단위 테스트 및 통합 테스트 구현',
-    columnId: 'todo',
+    columnId: COLUMN_ID.TODO,
     order: 3,
     priority: 'medium',
     tags: ['testing', 'quality'],
@@ -70,7 +71,7 @@ export const mockTasks: Task[] = [
     id: '6',
     title: '배포 파이프라인 구축',
     description: 'CI/CD 자동화 설정',
-    columnId: 'done',
+    columnId: COLUMN_ID.DONE,
     order: 1,
     priority: 'low',
     tags: ['devops', 'ci/cd'],

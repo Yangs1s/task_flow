@@ -1,6 +1,5 @@
 'use client'
 
-import { AddTaskButton } from "@/src/features/task/ui"
 import { DeleteColumnButton } from "@/src/features/column/ui"
 import { useTaskStore } from "@/src/entities/task/model/taskStore"
 import { TaskCard } from "@/src/entities/task/ui"
@@ -9,9 +8,10 @@ import { useMemo } from "react"
 
 interface TaskColumnProps {
   column: Column
+  footerSlot?: React.ReactNode
 }
 
-export const TaskColumn = ({ column }: TaskColumnProps) => {
+export const TaskColumn = ({ column, footerSlot }: TaskColumnProps) => {
   const allTasks = useTaskStore((state) => state.tasks)
   
   const tasks = useMemo(() => {
@@ -31,9 +31,8 @@ export const TaskColumn = ({ column }: TaskColumnProps) => {
         {tasks.map((task) => (
           <TaskCard key={task.id} {...task} />
         ))}
-      </div>
-      
-      <AddTaskButton columnId={column.id} />
+      </div>  
+      {footerSlot && footerSlot}
     </div>
   )
 }

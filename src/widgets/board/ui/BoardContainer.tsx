@@ -3,7 +3,7 @@
 import { useColumnStore } from "@/src/entities/column/model/columnStore"
 import { TaskColumn } from "@/src/entities/column/ui"
 import { useMemo, useEffect } from 'react'
-
+import { AddTaskButton } from "@/src/features/task/ui"
 interface BoardContainerProps {
   boardId: string
 }
@@ -28,7 +28,7 @@ export const BoardContainer = ({ boardId }: BoardContainerProps) => {
   return (
     <div className="flex gap-4 overflow-x-auto p-4">
       {columns.map((column) => (
-        <TaskColumn key={column.id} column={column} />
+        <TaskColumn key={column.id} column={column} footerSlot={<AddTaskButton columnId={column.id} />} />
       ))}
     </div>
   )
