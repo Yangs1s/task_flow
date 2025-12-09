@@ -5,6 +5,7 @@ import { TaskColumn } from "@/src/entities/column/ui"
 import { useMemo, useEffect } from 'react'
 import { AddTaskButton } from "@/src/features/task/ui"
 import { AddColumnButton } from "@/src/features/column/ui"
+import { TaskController } from "@/src/features/task/ui"
 
 interface BoardContainerProps {
   boardId: string
@@ -28,11 +29,14 @@ export const BoardContainer = ({ boardId }: BoardContainerProps) => {
   }, [allColumns])
 
   return (
-    <div className="flex gap-4 overflow-x-auto p-4">
-      {columns.map((column) => (
-        <TaskColumn key={column.id} column={column} footerSlot={<AddTaskButton columnId={column.id} />} />
-      ))}
-      <AddColumnButton />
+    <div className="flex flex-col gap-4 p-4">
+      <TaskController />
+      <div className="flex gap-4 overflow-x-auto">
+        {columns.map((column) => (
+          <TaskColumn key={column.id} column={column} footerSlot={<AddTaskButton columnId={column.id} />} />
+        ))}
+        <AddColumnButton />
+      </div>
     </div>
   )
 }
