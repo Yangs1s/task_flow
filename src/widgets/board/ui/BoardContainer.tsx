@@ -4,6 +4,8 @@ import { useColumnStore } from "@/src/entities/column/model/columnStore"
 import { TaskColumn } from "@/src/entities/column/ui"
 import { useMemo, useEffect } from 'react'
 import { AddTaskButton } from "@/src/features/task/ui"
+import { AddColumnButton } from "@/src/features/column/ui"
+
 interface BoardContainerProps {
   boardId: string
 }
@@ -30,6 +32,7 @@ export const BoardContainer = ({ boardId }: BoardContainerProps) => {
       {columns.map((column) => (
         <TaskColumn key={column.id} column={column} footerSlot={<AddTaskButton columnId={column.id} />} />
       ))}
+      <AddColumnButton />
     </div>
   )
 }

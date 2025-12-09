@@ -47,7 +47,7 @@ export const AddTaskModal = ({ open, onOpenChange, columnId }: AddTaskModalProps
       priority: 'medium',
       tags: '',
     },
-    mode: 'onChange',
+    mode: 'onBlur',
   })
 
   const onSubmit = (data: TaskFormOutput) => {
