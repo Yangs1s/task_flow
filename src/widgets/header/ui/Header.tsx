@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { AddBoardButton } from "@/src/features/board/add-board";
 import { BoardSelectBox } from "@/src/features/board/ui/BoardSelectBox";
 export function Header() {
@@ -11,10 +11,7 @@ export function Header() {
           {/* features는 사용자 액션을 담당! */}
           <AddBoardButton />
         </div>
-
-       
       </div>
     </header>
   );
 }
-
