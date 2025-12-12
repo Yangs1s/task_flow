@@ -1,0 +1,60 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogHeader,
+  DialogDescription,
+} from "@/src/shared/ui/dialog";
+import { Input } from "@/src/shared/ui/input";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { boardSchema, BoardFormInput } from "@/src/entities/board/model/schema";
+import { Textarea } from "@/src/shared/ui/textarea";
+
+interface AddBoardModalProps {
+  isOpen: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+export const AddBoardModal = ({ isOpen, onOpenChange }: AddBoardModalProps) => {
+  const handleOpenChange = (open: boolean) => {
+    onOpenChange(open);
+  };
+
+  const { register, handleSubmit } = useForm<BoardFormInput>({
+    resolver: zodResolver(boardSchema),
+    defaultValues: {
+      title: "",
+      description: "",
+    },
+  });
+
+  const onSubmit = (data: BoardFormInput) => {
+    console.log(data);
+  };
+
+  return (
+    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>프로젝트 추가</DialogTitle>
+          <DialogDescription>프로젝트를 추가해주세요</DialogDescription>
+        </DialogHeader>
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="title">제목</label>
+            <Input id="title" {...register("title")} />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="title">프로젝트 내용</label>
+            <Textarea
+              id="description"
+              {...register("description")}
+              placeholder="프로젝트 설명을 입력해주세요"
+            />
+          </div>
+        </form>
+      </DialogContent>
+    </Dialog>
+  );
+};
