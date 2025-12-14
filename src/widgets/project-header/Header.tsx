@@ -1,6 +1,6 @@
 "use client";
-import { AddBoardButton } from "@/src/features/board/add-board";
-import { BoardSelectBox } from "@/src/features/board/ui";
+import { AddBoardButton } from "@/src/features/project/add-board";
+import { BoardSelectBox } from "@/src/features/project/ui";
 export function Header() {
   return (
     <header className="bg-white border-b border-gray-200 p-4">

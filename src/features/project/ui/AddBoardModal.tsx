@@ -8,7 +8,10 @@ import {
 import { Input } from "@/src/shared/ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { boardSchema, BoardFormInput } from "@/src/entities/board/model/schema";
+import {
+  boardSchema,
+  BoardFormInput,
+} from "@/src/entities/project/model/schema";
 import { Textarea } from "@/src/shared/ui/textarea";
 
 interface AddBoardModalProps {
