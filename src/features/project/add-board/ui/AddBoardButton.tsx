@@ -2,8 +2,7 @@
 import { Button } from "@/src/shared/ui/button";
 import { PlusIcon } from "lucide-react";
 import { useState } from "react";
-import { AddBoardModal } from "../../../../widgets/modal/AddProjectModal";
-
+import { AddProjectModal } from "@/src/widgets/AddProjectModal";
 export const AddBoardButton = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
@@ -12,7 +11,7 @@ export const AddBoardButton = () => {
         보드
         <PlusIcon className="w-4 h-4" />
       </Button>
-      <AddBoardModal isOpen={isModalOpen} onOpenChange={setIsModalOpen} />
+      <AddProjectModal isOpen={isModalOpen} onOpenChange={setIsModalOpen} />
     </>
   );
 };

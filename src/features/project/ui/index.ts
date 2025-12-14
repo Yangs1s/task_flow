@@ -1,2 +1,2 @@
-export * from "../../../widgets/modal/AddProjectModal";
+export * from "../../../widgets/AddProjectModal";
 export * from "./BoardSelectBox";
