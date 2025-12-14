@@ -11,7 +11,7 @@ interface BoardContainerProps {
   boardId: string;
 }
 
-export const BoardContainer = ({ boardId }: BoardContainerProps) => {
+export const KanbanView = ({ boardId }: BoardContainerProps) => {
   const allColumns = useColumnStore((state) => state.columns);
   const addColumn = useColumnStore((state) => state.addColumn);
 
