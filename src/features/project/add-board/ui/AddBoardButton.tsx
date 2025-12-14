@@ -2,7 +2,7 @@
 import { Button } from "@/src/shared/ui/button";
 import { PlusIcon } from "lucide-react";
 import { useState } from "react";
-import { AddBoardModal } from "../../ui/AddBoardModal";
+import { AddBoardModal } from "../../../../widgets/modal/AddProjectModal";
 
 export const AddBoardButton = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

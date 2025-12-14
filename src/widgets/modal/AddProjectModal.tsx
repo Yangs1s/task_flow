@@ -14,12 +14,15 @@ import {
 } from "@/src/entities/project/model/schema";
 import { Textarea } from "@/src/shared/ui/textarea";
 
-interface AddBoardModalProps {
+interface AddProjectModalProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
 }
 
-export const AddBoardModal = ({ isOpen, onOpenChange }: AddBoardModalProps) => {
+export const AddProjectModal = ({
+  isOpen,
+  onOpenChange,
+}: AddProjectModalProps) => {
   const handleOpenChange = (open: boolean) => {
     onOpenChange(open);
   };
@@ -29,6 +32,8 @@ export const AddBoardModal = ({ isOpen, onOpenChange }: AddBoardModalProps) => {
     defaultValues: {
       title: "",
       description: "",
+      startDate: new Date(),
+      endDate: new Date(),
     },
   });
 
@@ -55,6 +60,14 @@ export const AddBoardModal = ({ isOpen, onOpenChange }: AddBoardModalProps) => {
               {...register("description")}
               placeholder="프로젝트 설명을 입력해주세요"
             />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="startDate">시작일</label>
+            <Input id="startDate" {...register("startDate")} />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="endDate">종료일</label>
+            <Input id="endDate" {...register("endDate")} />
           </div>
         </form>
       </DialogContent>

@@ -3,6 +3,8 @@ import { z } from "zod";
 export const boardSchema = z.object({
   title: z.string().min(1, { message: "제목은 필수 입력 항목입니다." }),
   description: z.string().optional(),
+  startDate: z.date(),
+  endDate: z.date(),
 });
 
 export type BoardFormInput = z.input<typeof boardSchema>;
