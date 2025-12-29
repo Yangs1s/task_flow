@@ -1,3 +1,1 @@
-export type { Board, BoardInput, BoardUpdate } from './types';
-
-    
+export type { Project, ProjectInput, ProjectUpdate } from "./types";
