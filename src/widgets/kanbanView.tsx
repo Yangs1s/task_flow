@@ -6,6 +6,7 @@ import { useMemo, useEffect } from "react";
 import { AddTaskButton } from "@/src/features/task/ui";
 import { AddColumnButton } from "@/src/features/column/ui";
 import { TaskController } from "@/src/features/task/ui";
+import { supabase } from "@/src/shared/lib/supabase";
 
 interface BoardContainerProps {
   boardId: string;
@@ -23,6 +24,18 @@ export const KanbanView = ({ boardId }: BoardContainerProps) => {
       addColumn({ title: "✅ Done", boardId, order: 2 });
     }
   }, [allColumns.length, addColumn, boardId]);
+
+  useEffect(() => {
+    const fetchColumns = async () => {
+      const { data, error } = await supabase.from("columns").select("*");
+      if (error) {
+        console.error(error);
+      } else {
+        console.log("연결 성공, columns", data);
+      }
+    };
+    fetchColumns();
+  }, []);
 
   const columns = useMemo(() => {
     return [...allColumns].sort((a, b) => a.order - b.order);
