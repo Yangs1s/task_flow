@@ -11,8 +11,8 @@ import { Input } from "@/src/shared/ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  boardSchema,
-  BoardFormInput,
+  projectSchema,
+  ProjectFormInput,
 } from "@/src/entities/project/model/schema";
 import { Textarea } from "@/src/shared/ui/textarea";
 
@@ -29,8 +29,8 @@ export const AddProjectModal = ({
     onOpenChange(open);
   };
 
-  const { register, handleSubmit } = useForm<BoardFormInput>({
-    resolver: zodResolver(boardSchema),
+  const { register, handleSubmit } = useForm<ProjectFormInput>({
+    resolver: zodResolver(projectSchema),
     defaultValues: {
       title: "",
       description: "",
@@ -39,7 +39,7 @@ export const AddProjectModal = ({
     },
   });
 
-  const onSubmit = (data: BoardFormInput) => {
+  const onSubmit = (data: ProjectFormInput) => {
     console.log(data);
   };
 
@@ -65,11 +65,11 @@ export const AddProjectModal = ({
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="startDate">시작일</label>
-            <Input id="startDate" {...register("startDate")} />
+            <Input id="startDate" type="date" {...register("startDate")} />
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="endDate">종료일</label>
-            <Input id="endDate" {...register("endDate")} />
+            <Input id="endDate" type="date" {...register("endDate")} />
           </div>
         </form>
       </DialogContent>

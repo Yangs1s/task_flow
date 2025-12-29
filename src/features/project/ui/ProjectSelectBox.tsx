@@ -6,7 +6,7 @@ import {
   SelectTrigger,
 } from "@/src/shared/ui/select";
 
-export const BoardSelectBox = () => {
+export const ProjectSelectBox = () => {
   // TODO: 보드 목록 조회 후 추가
   return (
     <Select>
