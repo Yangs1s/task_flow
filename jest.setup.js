@@ -7,6 +7,9 @@ import '@testing-library/jest-dom'
 import {TextEncoder, TextDecoder} from 'util'
 import crypto from 'crypto';
 
+// Mock Supabase module
+jest.mock('@/src/shared/lib/supabase');
+
 Object.assign(global, {TextEncoder, TextDecoder})
 
 if(typeof global.crypto !== 'undefined'){

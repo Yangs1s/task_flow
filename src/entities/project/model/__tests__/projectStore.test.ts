@@ -22,6 +22,8 @@ describe("ProjectStore - 프로젝트 관리", () => {
         result.current.addProject({
           title: "New Project",
           description: "Project description",
+          startDate: new Date(),
+          endDate: new Date(),
         });
       });
 
@@ -38,6 +40,8 @@ describe("ProjectStore - 프로젝트 관리", () => {
       act(() => {
         result.current.addProject({
           title: "Project",
+          startDate: new Date(),
+          endDate: new Date(),
         });
       });
 
@@ -53,6 +57,8 @@ describe("ProjectStore - 프로젝트 관리", () => {
       act(() => {
         result.current.addProject({
           title: "Project",
+          startDate: new Date(),
+          endDate: new Date(),
         });
       });
 
@@ -71,9 +77,21 @@ describe("ProjectStore - 프로젝트 관리", () => {
       const { result } = renderHook(() => useProjectStore());
 
       act(() => {
-        result.current.addProject({ title: "Project 1" });
-        result.current.addProject({ title: "Project 2" });
-        result.current.addProject({ title: "Project 3" });
+        result.current.addProject({
+          title: "Project 1",
+          startDate: new Date(),
+          endDate: new Date(),
+        });
+        result.current.addProject({
+          title: "Project 2",
+          startDate: new Date(),
+          endDate: new Date(),
+        });
+        result.current.addProject({
+          title: "Project 3",
+          startDate: new Date(),
+          endDate: new Date(),
+        });
       });
 
       expect(result.current.projects).toHaveLength(3);
@@ -90,6 +108,8 @@ describe("ProjectStore - 프로젝트 관리", () => {
       act(() => {
         result.current.addProject({
           title: "Original Title",
+          startDate: new Date(),
+          endDate: new Date(),
         });
       });
 
@@ -98,6 +118,8 @@ describe("ProjectStore - 프로젝트 관리", () => {
       act(() => {
         result.current.updateProject(projectId, {
           title: "Updated Title",
+          startDate: new Date(),
+          endDate: new Date(),
         });
       });
 
@@ -111,6 +133,8 @@ describe("ProjectStore - 프로젝트 관리", () => {
         result.current.addProject({
           title: "Project",
           description: "Original",
+          startDate: new Date(),
+          endDate: new Date(),
         });
       });
 
@@ -133,6 +157,8 @@ describe("ProjectStore - 프로젝트 관리", () => {
       act(() => {
         result.current.addProject({
           title: "Project",
+          startDate: new Date(),
+          endDate: new Date(),
         });
       });
 
@@ -156,7 +182,11 @@ describe("ProjectStore - 프로젝트 관리", () => {
       const { result } = renderHook(() => useProjectStore());
 
       act(() => {
-        result.current.addProject({ title: "Project" });
+        result.current.addProject({
+          title: "Project",
+          startDate: new Date(),
+          endDate: new Date(),
+        });
       });
 
       act(() => {
@@ -174,7 +204,11 @@ describe("ProjectStore - 프로젝트 관리", () => {
       const { result } = renderHook(() => useProjectStore());
 
       act(() => {
-        result.current.addProject({ title: "Project" });
+        result.current.addProject({
+          title: "Project",
+          startDate: new Date(),
+          endDate: new Date(),
+        });
       });
 
       const projectId = result.current.projects[0].id;
@@ -190,9 +224,21 @@ describe("ProjectStore - 프로젝트 관리", () => {
       const { result } = renderHook(() => useProjectStore());
 
       act(() => {
-        result.current.addProject({ title: "Project 1" });
-        result.current.addProject({ title: "Project 2" });
-        result.current.addProject({ title: "Project 3" });
+        result.current.addProject({
+          title: "Project 1",
+          startDate: new Date(),
+          endDate: new Date(),
+        });
+        result.current.addProject({
+          title: "Project 2",
+          startDate: new Date(),
+          endDate: new Date(),
+        });
+        result.current.addProject({
+          title: "Project 3",
+          startDate: new Date(),
+          endDate: new Date(),
+        });
       });
 
       const projectIdToDelete = result.current.projects[1].id;
@@ -210,7 +256,11 @@ describe("ProjectStore - 프로젝트 관리", () => {
       const { result } = renderHook(() => useProjectStore());
 
       act(() => {
-        result.current.addProject({ title: "Project" });
+        result.current.addProject({
+          title: "Project",
+          startDate: new Date(),
+          endDate: new Date(),
+        });
       });
 
       act(() => {
@@ -226,8 +276,16 @@ describe("ProjectStore - 프로젝트 관리", () => {
       const { result } = renderHook(() => useProjectStore());
 
       act(() => {
-        result.current.addProject({ title: "Project 1" });
-        result.current.addProject({ title: "Project 2" });
+        result.current.addProject({
+          title: "Project 1",
+          startDate: new Date(),
+          endDate: new Date(),
+        });
+        result.current.addProject({
+          title: "Project 2",
+          startDate: new Date(),
+          endDate: new Date(),
+        });
       });
 
       const projectId = result.current.projects[1].id;
@@ -241,7 +299,11 @@ describe("ProjectStore - 프로젝트 관리", () => {
       const { result } = renderHook(() => useProjectStore());
 
       act(() => {
-        result.current.addProject({ title: "Project" });
+        result.current.addProject({
+          title: "Project",
+          startDate: new Date(),
+          endDate: new Date(),
+        });
       });
 
       const project = result.current.getProject("non-existent-id");
@@ -255,8 +317,16 @@ describe("ProjectStore - 프로젝트 관리", () => {
       const { result } = renderHook(() => useProjectStore());
 
       act(() => {
-        result.current.addProject({ title: "Project 1" });
-        result.current.addProject({ title: "Project 2" });
+        result.current.addProject({
+          title: "Project 1",
+          startDate: new Date(),
+          endDate: new Date(),
+        });
+        result.current.addProject({
+          title: "Project 2",
+          startDate: new Date(),
+          endDate: new Date(),
+        });
       });
 
       expect(result.current.projects).toHaveLength(2);

@@ -1,9 +1,13 @@
 import { create } from "zustand";
 import { Project, ProjectInput, ProjectUpdate } from "./types";
 import { generateId } from "@/src/shared/lib/generateId";
+import { projectApi } from "../api/projectApi";
 
 interface ProjectStore {
   projects: Project[];
+  isLoading: boolean;
+  error: Error | null;
+  fetchProjects: () => Promise<void>;
   addProject: (project: ProjectInput) => void;
   updateProject: (id: string, updates: ProjectUpdate) => void;
   deleteProject: (id: string) => void;
@@ -13,6 +17,12 @@ interface ProjectStore {
 
 export const useProjectStore = create<ProjectStore>((set, get) => ({
   projects: [],
+  isLoading: false,
+  error: null,
+  fetchProjects: async () => {
+    const projects = await projectApi.getProjects();
+    set({ projects });
+  },
   addProject: (project) => {
     const newProject: Project = {
       ...project,

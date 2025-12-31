@@ -26,15 +26,57 @@ export const KanbanView = ({ boardId }: BoardContainerProps) => {
   }, [allColumns.length, addColumn, boardId]);
 
   useEffect(() => {
-    const fetchColumns = async () => {
-      const { data, error } = await supabase.from("columns").select("*");
-      if (error) {
-        console.error(error);
+    const fetchData = async () => {
+      console.clear(); // 콘솔창 청소 (깔끔하게 보려고)
+      console.log("🚀 Supabase 데이터 조회 시작!");
+
+      // 1. Projects 조회
+      const { data: projects, error: projectError } = await supabase
+        .from("projects")
+        .select("*");
+
+      if (projectError) console.error("❌ 프로젝트 에러:", projectError);
+      else console.log("✅ 1. Projects 테이블:", projects);
+
+      // 2. Columns 조회
+      const { data: columns, error: columnError } = await supabase
+        .from("columns")
+        .select("*");
+
+      if (columnError) console.error("❌ 컬럼 에러:", columnError);
+      else console.log("✅ 2. Columns 테이블:", columns);
+
+      // 3. Tasks 조회
+      const { data: tasks, error: taskError } = await supabase
+        .from("tasks")
+        .select("*");
+
+      if (taskError) console.error("❌ 태스크 에러:", taskError);
+      else console.log("✅ 3. Tasks 테이블:", tasks);
+
+      // 4. [심화] 관계형 데이터 조회 (프로젝트 -> 컬럼 -> 태스크 한 번에 가져오기)
+      // 외래키(Foreign Key) 연결이 잘 되어있어야만 작동합니다.
+      const { data: allInOne, error: relationError } = await supabase.from(
+        "projects"
+      ).select(`
+          *,
+          columns (
+            *,
+            tasks (*)
+          )
+        `);
+
+      if (relationError) {
+        console.warn(
+          "⚠️ 관계형 조회 실패 (Foreign Key 연결 확인 필요):",
+          relationError.message
+        );
       } else {
-        console.log("연결 성공, columns", data);
+        console.log("✨ 4. [계층형 구조] 프로젝트 > 컬럼 > 태스크:", allInOne);
       }
     };
-    fetchColumns();
+
+    fetchData();
   }, []);
 
   const columns = useMemo(() => {
