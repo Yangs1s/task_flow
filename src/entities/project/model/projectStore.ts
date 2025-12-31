@@ -21,6 +21,7 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
   error: null,
   fetchProjects: async () => {
     const projects = await projectApi.getProjects();
+    console.log("프로젝트 불러오기 성공", projects);
     set({ projects });
   },
   addProject: (project) => {

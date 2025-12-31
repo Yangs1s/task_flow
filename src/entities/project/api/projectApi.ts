@@ -6,7 +6,7 @@ export const projectApi = {
     const { data, error } = await supabase
       .from("projects")
       .select("*")
-      .eq("session_id", getSessionId())
+      // .eq("session_id", getSessionId())
       .order("created_at", { ascending: false });
     if (error) throw error;
     console.log("프로젝트 불러오기 성공", data);
