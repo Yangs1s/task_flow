@@ -1,6 +1,7 @@
 "use client";
 import { AddBoardButton } from "@/src/features/project/add-board";
 import { ProjectSelectBox } from "@/src/features/project/ui";
+
 export const ProjectHeader = () => {
   return (
     <header className="bg-white border-b border-gray-200 p-4">

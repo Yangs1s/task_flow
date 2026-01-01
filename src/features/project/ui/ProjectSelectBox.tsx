@@ -7,22 +7,30 @@ import {
 } from "@/src/shared/ui/select";
 import { useProjectStore } from "@/src/entities/project/model/projectStore";
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 
 export const ProjectSelectBox = () => {
   const { projects, fetchProjects } = useProjectStore();
   const router = useRouter();
+  const params = useParams();
+  const currentProjectId = params?.id as string | undefined;
+
   useEffect(() => {
     fetchProjects();
   }, [fetchProjects]);
+
   const handleValueChange = (newProjectId: string) => {
     router.push(`/${newProjectId}`);
   };
-  // TODO: 보드 목록 조회 후 추가
+
+  const currentProject = projects.find((p) => p.id === currentProjectId);
+
   return (
-    <Select onValueChange={handleValueChange}>
+    <Select value={currentProjectId} onValueChange={handleValueChange}>
       <SelectTrigger>
-        <SelectValue placeholder="프로젝트 관리" />
+        <SelectValue placeholder="프로젝트 선택">
+          {currentProject?.title || "프로젝트 선택"}
+        </SelectValue>
       </SelectTrigger>
       <SelectContent>
         {projects.map((project) => (
