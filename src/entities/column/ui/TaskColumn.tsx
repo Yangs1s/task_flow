@@ -1,10 +1,11 @@
 "use client";
 
-import { DeleteColumnButton } from "@/src/features/column/ui";
 import { useTaskStore } from "@/src/entities/task/model/taskStore";
-import { TaskCard } from "@/src/entities/task/ui";
+import { DeleteColumnButton } from "@/src/features/column/ui";
 import { Column } from "../model/types";
+import { TaskCard } from "@/src/entities/task/ui";
 import { useShallow } from "zustand/react/shallow";
+import { useEffect } from "react";
 interface TaskColumnProps {
   column: Column;
   footerSlot?: React.ReactNode;
@@ -18,7 +19,9 @@ export const TaskColumn = ({ column, footerSlot }: TaskColumnProps) => {
         .sort((a, b) => (a.order || 0) - (b.order || 0))
     )
   );
-
+  useEffect(() => {
+    useTaskStore.getState().fetchTasks(column.id);
+  }, [column.id]);
   return (
     <div className="bg-card text-card-foreground border border-border p-4 rounded-lg shadow-sm gap-4 flex flex-col min-w-80 h-fit">
       <div className="flex items-center justify-between">

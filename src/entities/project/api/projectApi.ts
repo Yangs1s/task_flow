@@ -9,7 +9,7 @@ export const projectApi = {
       // .eq("session_id", getSessionId())
       .order("created_at", { ascending: false });
     if (error) throw error;
-    console.log("프로젝트 불러오기 성공", data);
+    // console.log("프로젝트 불러오기 성공", data);
     return data;
   },
   createProject: async (project: Project): Promise<Project> => {

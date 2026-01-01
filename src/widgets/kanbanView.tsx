@@ -6,16 +6,21 @@ import { AddTaskButton } from "@/src/features/task/ui";
 import { AddColumnButton } from "@/src/features/column/ui";
 import { TaskController } from "@/src/features/task/ui";
 import { useShallow } from "zustand/react/shallow";
+import { useProjectStore } from "../entities/project/model/projectStore";
+import { useEffect } from "react";
 
-interface BoardContainerProps {
-  boardId: string;
-}
-
-export const KanbanView = () => {
+export const KanbanView = ({ projectId }: { projectId: string }) => {
   const allColumns = useColumnStore(
     useShallow((state) => state.columns.sort((a, b) => a.order - b.order))
   );
+  useEffect(() => {
+    useColumnStore.getState().fetchColumns(projectId);
+  }, [projectId]);
 
+  console.log("allColumns :", allColumns);
+  // const projectTitle = useProjectStore(
+  //   state.projects.find((p) => p.id === BOARD_ID)
+  // );
   return (
     <div className="flex flex-col gap-4 p-4">
       <div>
